@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Articles - Real</title>
+    <style>
+        input {display: block;}
+        textarea {display: block;}
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Create Blog Post">
+    </form>
+    {% for article in articles %}
+        <li>
+            <a href="http://localhost:8000/blog/articles/{{ article.id }}">Read the article</a>
+            <p>Title: {{ article.title }}</p>
+            <p>Author: {{ article.author }}</p>
+            <p>Category: {{ article.category }}</p>
+            <p>Post date: {{ article.created_at }}</p>
+        </li>
+    {% endfor %}
+</body>
+</html>
